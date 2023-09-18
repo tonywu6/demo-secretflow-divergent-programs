@@ -1,3 +1,4 @@
+import jax.numpy as jnp
 import secretflow
 from spu import spu_pb2
 
@@ -42,8 +43,8 @@ alice = secretflow.PYU(peer_party)
 spu = secretflow.SPU(**spu_config)
 
 
-def noop():
-    return
+def multiply(x, y):
+    return jnp.multiply(x, y)
 
 
 array = alice(lambda x: x)(...)
@@ -52,7 +53,7 @@ array = array.to(spu)
 multiplier = bob(lambda x: x)(0.5)
 multiplier = multiplier.to(spu)
 
-result = spu(noop)(array, multiplier)
+result = spu(multiply)(array, multiplier)
 
 result_for_alice = result.to(alice)
 result_for_bob = result.to(bob)
