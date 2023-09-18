@@ -1,0 +1,31 @@
+[project]
+authors = [
+  {name = "Tony Wu", email = "tonywu6@protonmail.com"},
+]
+classifiers = [
+  "Private :: Do Not Upload",
+]
+
+dependencies = []
+description = "Add your description here"
+name = "spu-polymorphic"
+readme = "README.md"
+requires-python = ">= 3.8, <3.9"
+version = "0.1.0"
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.rye]
+dev-dependencies = [
+    "jax<=0.4.12",
+    "ray[default]~=2.2.0",
+    "secretflow-lite==1.1.0b0",
+    "pydantic>=1.10, <2",
+    "setuptools>=68.2.2",
+]
+managed = true
+
+[tool.hatch.metadata]
+allow-direct-references = true
